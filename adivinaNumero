@@ -1,0 +1,24 @@
+import java.util.Scanner;
+import java.util.Random;
+
+public class AdivinaNumero {
+    public static void main(String[] args) {
+        Random random = new Random();
+        int numeroAleatorio = random.nextInt(100) + 1;
+        Scanner scanner = new Scanner(System.in);
+        int intento;
+
+        do {
+            System.out.print("Adivina el número (entre 1 y 100): ");
+            intento = scanner.nextInt();
+
+            if (intento < numeroAleatorio) {
+                System.out.println("El número es mayor.");
+            } else if (intento > numeroAleatorio) {
+                System.out.println("El número es menor.");
+            } else {
+                System.out.println("¡Felicidades! Adivinaste el número.");
+            }
+        } while (intento != numeroAleatorio);
+    }
+}
