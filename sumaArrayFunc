@@ -1,0 +1,18 @@
+public class SumaArray {
+    
+    public static void main(String[] args) {
+        int[] array = {3, 5, 7, 2, 8};
+        
+        int suma = sumarArray(array);
+        
+        System.out.println("La suma de los elementos es: " + suma);
+    }
+
+    public static int sumarArray(int[] array) {
+        int suma = 0;
+        for (int i : array) {
+            suma += i;
+        }
+        return suma;
+    }
+}
