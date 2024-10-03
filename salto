@@ -1,0 +1,22 @@
+public class Main {
+public static void main(String[] args) {
+int t[]=new int[10];
+int ultimo;
+// leemos la tabla
+for (int i=0;i<10;i++){
+System.out.print("Introduzca número: ");
+t[i]=Entrada.entero();
+}
+// guardamos el último elemento de la tabla
+ultimo = t[9];
+Ejercicios de Programación en Java// desplazamos hacia abajo (de 0 hacia la última posición)
+// al desplazar perdemos el último valor, por eso lo hemos guardado antes.
+for (int i=8;i>=0;i--)
+t[i+1]=t[i];
+// el último valor pasa a ser el primero
+t[0] =ultimo;
+System.out.println("La tabla queda:");
+for (int i=0;i<10;i++)
+System.out.println(t[i]);
+}
+}
