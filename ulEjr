@@ -1,0 +1,54 @@
+public class Main {
+ public static void main(String[] args) {
+ int i, m, a;
+ // la idea de este ejercicio es hacer una traza de forma manual, y tras
+ // ésta, escribir el código equivalente para comprobar el resultado.
+ // Debemos destacar que este algoritmo no tiene sentido ni hace nada en concreto
+ // incluso con otros datos de entrada el algoritmo puede dar un error, al
+ // utilizar datos como índices de tablas sin las pertinentes
+ // comprobaciones.
+ int t = new int [5];
+ for (i=0; i<=4; i++)
+ t[i] = Entrada.entero();
+ // podemos sustituir la lectura de datos por la siguiente línea:
+ //int t[] = {-4, 0, 1, 3, 2};
+ m = 0;
+ for (i=0; i<=4; i++)
+ if (t[i] > m )
+ m = t[i];
+ a = t[4-m];
+ t[4-m] = t[m];
+ t[m] = a;
+ for (i=0; i<=4; i++)
+ System.out.println (t[i]);
+ }
+}
+ Ejercicios de Programación en Java 109
+package bol05ej10;
+public class Main {
+ public static void main(String[] args) {
+ int n, i;
+ /* la idea de este ejercicio es hacer una traza de forma manual, y tras ésta, escribir el código
+ equivalente para comprobar el resultado. Debemos destacar que este algoritmo no tiene sentido
+ ni hace nada en concreto incluso con otros datos de entrada el algoritmo puede dar un error,
+ al utilizar datos como índices de tablas sin las pertinentes comprobaciones.
+ */
+ int a[] = new int [10];
+ int b[] = new int [10];
+ for (i=0; i<=n; i++)
+ a[i] = Entrada.entero();
+ // podemos sustituir la declaración de a y la lectura de datos por la siguiente línea:
+ // int a[] = {6, 2, 8, 9, 2, 5, 8, 2, 6, 1};
+ n = 10;
+ for (i=0; i<=n/2; i++) {
+ b[i] = a[n-1-i];
+ b[n-1-i] = a[i];
+ }
+
+ for (i=0; i<n; i++)
+ if (i % 2 == 0)
+ System.out.println (a[i]);
+ else
+ System.out.println (b[i]);
+ }
+}
