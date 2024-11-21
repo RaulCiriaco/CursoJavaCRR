@@ -1,0 +1,98 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class CompilerInterface extends JFrame {
+    private JTextArea codeArea, outputArea, errorArea;
+    private JButton compileButton, runButton, clearButton;
+
+    public CompilerInterface() {
+        // Configuración de la ventana
+        setTitle("Mi Compilador");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(800, 600);
+        setLayout(new BorderLayout());
+
+        // Crear áreas de texto
+        codeArea = new JTextArea();
+        outputArea = new JTextArea();
+        errorArea = new JTextArea();
+
+        codeArea.setFont(new Font("Monospaced", Font.PLAIN, 14));
+        outputArea.setFont(new Font("Monospaced", Font.PLAIN, 14));
+        errorArea.setFont(new Font("Monospaced", Font.PLAIN, 14));
+
+        outputArea.setEditable(false);
+        errorArea.setEditable(false);
+
+        // Paneles
+        JPanel centerPanel = new JPanel(new GridLayout(1, 2));
+        JPanel bottomPanel = new JPanel(new GridLayout(1, 1));
+
+        // Agregar scrolls
+        JScrollPane codeScroll = new JScrollPane(codeArea);
+        JScrollPane outputScroll = new JScrollPane(outputArea);
+        JScrollPane errorScroll = new JScrollPane(errorArea);
+
+        // Etiquetas
+        centerPanel.add(codeScroll);
+        centerPanel.add(outputScroll);
+
+        // Errores en la parte inferior
+        bottomPanel.add(errorScroll);
+
+        // Crear barra de herramientas
+        JToolBar toolBar = new JToolBar();
+        compileButton = new JButton("Compilar");
+        runButton = new JButton("Ejecutar");
+        clearButton = new JButton("Limpiar");
+
+        toolBar.add(compileButton);
+        toolBar.add(runButton);
+        toolBar.add(clearButton);
+
+        // Listeners
+        compileButton.addActionListener(e -> compileCode());
+        runButton.addActionListener(e -> runCode());
+        clearButton.addActionListener(e -> clearAreas());
+
+        // Añadir componentes a la ventana
+        add(toolBar, BorderLayout.NORTH);
+        add(centerPanel, BorderLayout.CENTER);
+        add(bottomPanel, BorderLayout.SOUTH);
+
+        setVisible(true);
+    }
+
+    private void compileCode() {
+        // Lógica para compilar el código (simulación)
+        String code = codeArea.getText();
+        if (code.isEmpty()) {
+            errorArea.setText("Error: No hay código para compilar.");
+        } else {
+            errorArea.setText("Compilación exitosa.");
+            outputArea.setText("");
+        }
+    }
+
+    private void runCode() {
+        // Lógica para ejecutar el código (simulación)
+        String code = codeArea.getText();
+        if (code.contains("System.out.println")) {
+            outputArea.setText("Hello, World!");
+        } else {
+            outputArea.setText("No se pudo ejecutar el programa.");
+        }
+    }
+
+    private void clearAreas() {
+        // Limpiar las áreas de texto
+        codeArea.setText("");
+        outputArea.setText("");
+        errorArea.setText("");
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> new CompilerInterface());
+    }
+}
